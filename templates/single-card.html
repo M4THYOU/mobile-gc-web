@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block header %}
+	<!-- Meta Description -->
+	<meta name="description" content="Buy a gift card online for {{ current_card.merchant_name }}.">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>{{ current_card.merchant_name }} Gift Card | Qwaked</title>
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>{{ current_card.merchant_name }}</h1>
+					<nav class="d-flex align-items-center">
+						<a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{% url 'browse' %}">Browse<span class="lnr lnr-arrow-right"></span></a>
+						<a href="" disabled>{{ current_card.merchant_name }}</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Single Product Area =================-->
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+
+							<img class="img-fluid" src="{{ current_card.card_key.card_image.url }}" alt="">
+
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3>{{ current_card.merchant_name }} Gift Card</h3>
+						<ul class="list">
+							<li><a href="#"><span>Availibility</span> : Available</a></li>
+						</ul>
+						<p>{{ current_card.description }}</p>
+						<div class="card_area d-flex align-items-center">
+							<a class="primary-btn" href="{% url 'add-to-cart' current_card.slug %}">Add to Cart</a>
+						</div>
+                        <p>You can select the price and quantity of each card at checkout!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
+
+	<!--================Product Description Area =================-->
+	<section class="product_description_area">
+		<div class="container">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">How It Works</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<p>Qwaked allows you to buy a gift card for anyone at a variety of restaurants and store.</p>
+                    <p>Once you've added 1 or more gift cards to your cart, you may proceed to checkout. There, you can select the recipient, price, and quantity of each gift card.</p>
+                    <p>After payment is made, the recipient will receive an email notifying them of the gift.</p>
+                    <p>To use the gift card, all you have to do is download the <a href="#">Qwaked iOS App, available on the App Store</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Product Description Area =================-->
+
+{% endblock %}
+
+{% block js_scripts %}
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+	{% block header %}
+	<!-- Meta Description -->
+	<meta name="description" content="Buy a gift card online for {{ current_card.merchant_name }}.">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>{{ current_user.first_name }} {{ current_user.last_name }}'s Account | Qwaked</title>
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+	
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>{{ current_user.first_name }} {{ current_user.last_name }}</h1>
+					<nav class="d-flex align-items-center">
+						<a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{% url 'my-account' %}">My Account</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <br>
+    <div class="container">
+
+        <a style="float: right" href="{% url 'logout' %}" class="genric-btn danger-border small">Sign Out</a>
+        <h1>Your Gift Cards</h1>
+        <br>
+
+        <div class="row">
+
+            {% for card in gift_cards %}
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="single-product">
+                        <img class="img-fluid" src="{{ card.card_key.card_image.url }}" alt="">
+
+                        <div class="product-details">
+                            <h6>{{ card.merchant_name }} | <span style="color: #28d500">${{ card.current_card_value }}</span></h6>
+                            <p>Sent by: {{ card.sender_key.first_name }} {{ card.sender_key.last_name }}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_scripts %}
+{% endblock %}
+
+</body>
+
+</html>

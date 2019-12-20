@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block header %}
+	<!-- Meta Description -->
+	<meta name="description" content="Buy a gift card online for {{ current_card.merchant_name }}.">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Sign In | Qwaked</title>
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Login/Register</h1>
+					<nav class="d-flex align-items-center">
+						<a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{% url 'login' %}">Login/Register</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="{% static 'img/login.jpg' %}" alt="">
+						<div class="hover">
+							<h4 id="other-option-text">New to Qwaked?</h4>
+							<a class="primary-btn" id="switch-mode-button" style="color: white">Create an Account</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3 id="form-title">Log in to enter</h3>
+						<form class="row login_form" method="post" id="login-form" novalidate="novalidate">
+							<div class="col-md-12 form-group">
+								<input type="email" class="form-control" id="id_username" name="username" placeholder="Email" maxlength="150" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" required>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="id_password" name="password" placeholder="Password" maxlength="128" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
+							</div>
+
+                            <!--
+							<div class="col-md-12 form-group">
+								<div class="creat_account">
+									<input type="checkbox" id="f-option2" name="selector">
+									<label for="f-option2">Keep me logged in</label>
+								</div>
+							</div>-->
+
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn" id="form-submit-button">Log In</button>
+								<!--<a href="#">Forgot Password?</a>-->
+							</div>
+
+                            {{ login_form.non_field_errors }}
+
+                            {% csrf_token %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+
+{% endblock %}
+
+{% block js_scripts %}
+    <script src="{% static 'js/custom/login-register.js' %}"></script>
+{% endblock %}
+
+</body>
+
+</html>

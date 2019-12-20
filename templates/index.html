@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block header %}
+	<!-- Meta Description -->
+	<meta name="description" content="Buy a virtual gift card for you or someone else!">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Mobile Gift Cards | Qwaked</title>
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+
+
+	<!-- start banner Area -->
+	<section class="banner-area">
+		<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="col-lg-12">
+					<div class="active-banner-slider owl-carousel">
+						<!-- single-slide -->
+						<div class="row single-slide align-items-center d-flex">
+							<div class="col-lg-5 col-md-6">
+								<div class="banner-content">
+									<h1>Try Out<br>{{ first_featured.merchant_name }}!</h1>
+									<p>For a friend, family member, coworker, or yourself, a gift card for {{ first_featured.merchant_name }} never fails to make a person smile.</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href="{% url 'single-card' first_featured.slug %}"><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">More Info</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+                                    <a href="{% url 'single-card' first_featured.slug %}">
+                                        <img class="img-fluid" src="{{ first_featured.card_key.card_image.url }}" alt="">
+                                    </a>
+								</div>
+							</div>
+						</div>
+						<!-- single-slide -->
+						<div class="row single-slide">
+							<div class="col-lg-5">
+								<div class="banner-content">
+									<h1>Or Maybe<br>{{ second_featured.merchant_name }}?</h1>
+									<p>If you know someone who likes {{ second_featured.one_liner }}, a gift card for {{ second_featured.merchant_name }} is the gift for them!</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href="{% url 'single-card' second_featured.slug %}"><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">More Info</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+                                    <a href="{% url 'single-card' second_featured.slug %}">
+									    <img class="img-fluid" src="{{ second_featured.card_key.card_image.url }}" alt="">
+                                    </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- start features Area -->
+	<section class="features-area section_gap">
+		<div class="container">
+			<div class="row features-inner">
+				<!-- single features -->
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon2.png' %}" alt="">
+						</div>
+						<h6>Completely Digital</h6>
+						<p>No physical gift cards. Pay straight from our app.</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon4.png' %}" alt="">
+						</div>
+						<h6>Mobile Payments</h6>
+						<p>Seamless and secure mobile payments.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end features Area -->
+
+
+
+	<!-- start product Area -->
+	<section class="active-product-area section_gap">
+		<!-- single product slide -->
+		<div class="">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Most Popular</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+                    {% for card in all_cards %}
+                        <div class="col-lg-4 col-md-6">
+
+                            <div class="single-product">
+                                <a href="{% url 'single-card' card.slug %}">
+    							    <img class="img-fluid" src="{{ card.card_key.card_image.url }}" alt="">
+                                </a>
+                                <div class="product-details">
+
+                                    <a href="{% url 'single-card' card.slug %}">
+                                        <h6>{{ card.merchant_name }}</h6>
+                                    </a>
+
+                                    <div class="prd-bottom">
+
+                                        <a href="{% url 'single-card' card.slug %}" class="social-info">
+                                            <span class="ti-bag"></span>
+                                            <p class="hover-text">Buy Now</p>
+                                        </a>
+                                        <a href="{% url 'single-card' card.slug %}" class="social-info">
+                                            <span class="lnr lnr-move"></span>
+                                            <p class="hover-text">view more</p>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+				</div>
+			</div>
+		</div>
+		<!-- single product slide -->
+		<div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Trending</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+                    {% for card in all_cards reversed %}
+                        <div class="col-lg-4 col-md-6">
+
+                            <div class="single-product">
+                                <a href="{% url 'single-card' card.slug %}">
+    							    <img class="img-fluid" src="{{ card.card_key.card_image.url }}" alt="">
+                                </a>
+                                <div class="product-details">
+
+                                    <a href="{% url 'single-card' card.slug %}">
+                                        <h6>{{ card.merchant_name }}</h6>
+                                    </a>
+
+                                    <div class="prd-bottom">
+
+                                        <a href="{% url 'single-card' card.slug %}" class="social-info">
+                                            <span class="ti-bag"></span>
+                                            <p class="hover-text">Buy Now</p>
+                                        </a>
+                                        <a href="{% url 'single-card' card.slug %}" class="social-info">
+                                            <span class="lnr lnr-move"></span>
+                                            <p class="hover-text">view more</p>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end product Area -->
+
+{% endblock %}
+
+{% block js_scripts %}
+{% endblock %}
+
+</body>
+
+</html>

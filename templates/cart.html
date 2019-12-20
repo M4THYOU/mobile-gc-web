@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block header %}
+	<!-- Meta Description -->
+	<meta name="description" content="Buy a gift card online for {{ current_card.merchant_name }}.">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>My Cart | Qwaked</title>
+
+    <link rel="stylesheet" href="{% static 'css/custom/cart.css' %}">
+
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Shopping Cart</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{% url 'browse' %}">Browse<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{% url 'my-cart' %}">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Cart Area =================-->
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Store</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Send as Gift (Optional)</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all-cards">
+
+                            {% for card in cart_cards %}
+
+                                <tr class="card-row">
+                                    <td>
+                                        <div class="media">
+                                            <div class="">
+                                                <img width="179" height="114" src="{{ card.card_key.card_image.url }}" alt="">
+                                            </div>
+                                        </div>
+                                        <a class="remove-card" href="{% url 'remove-from-cart' card.id %}">Remove</a>
+                                    </td>
+                                    <td>
+                                        $<input type="number" min="1" max="99999" name="qty" maxlength="8" class="card-val" value="{{ card.current_card_value }}" title="Price">
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <input type="text" name="qty" id="sst" maxlength="12" value="{{ card.quantity }}" title="Quantity:"
+                                                class="input-text qty">
+                                            <button class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                            <button class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <input type="email" maxlength="300" value="{{ card.receiver_username }}" title="Receiver's Email" class="receiver-email" placeholder="your-friend@email.com">
+                                        <p style="color: red" class="email-error"></p>
+                                    </td>
+
+                                    <td>
+                                        <h5>$<span class="total-cost">00.00</span></h5>
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                            <!--<tr class="bottom_button">
+                                <td>
+                                    <a class="gray_btn" href="#">Update Cart</a>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="cupon_text d-flex align-items-center">
+                                        <input type="text" placeholder="Coupon Code">
+                                        <a class="primary-btn" href="#">Apply</a>
+                                        <a class="gray_btn" href="#">Close Coupon</a>
+                                    </div>
+                                </td>
+                            </tr>-->
+
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+
+                                <td>
+                                    <h5>Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5 id="subtotal">$00.00</h5>
+                                </td>
+                            </tr>
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <a class="gray_btn" id="shop-button" href="{% url 'browse' %}">Continue Shopping</a>
+                                        <button class="primary-btn" id="checkout-button">Proceed to checkout</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Cart Area =================-->
+
+{% endblock %}
+
+{% block js_scripts %}
+    {% csrf_token %}
+    <script src="{% static 'js/custom/cart.js' %}"></script>
+{% endblock %}
+
+</body>
+
+</html>

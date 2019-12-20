@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% extends 'base.html' %}
+{% load static %}
+{% load qr_code %}
+<head>
+
+    {% block header %}
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Complete Purchase</title>
+
+    <link rel="stylesheet" href="{% static 'css/custom/cart.css' %}"> <!-- Contains the loader -->
+
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>{{ price }}</h1>
+					<nav class="d-flex align-items-center">
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+    <br>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4"></div>
+            <div class="col-lg-4 col-md-4">
+
+                <div class="single-product">
+
+                    {% qr_from_text code_url size="L" %}
+
+                </div>
+
+            </div>
+            <h2>{{ code_url }}</h2>
+            <div class="col-lg-4 col-md-4"></div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_scripts %}
+{% endblock %}
+
+</body>
+
+</html>
