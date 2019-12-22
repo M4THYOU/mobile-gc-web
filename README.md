@@ -2,6 +2,16 @@
 
 Qwaked is a mobile gift card platform built with a Django backend.
 
+<h2>Features/Tech Used</h2>
+<ul>
+<li>Email verification with Django built-in features.</li>
+<li>Stripe Connect for payment processing.</li>
+<li>QR Code generation on the backend with <a href="https://github.com/dprog-philippe-docourt/django-qr-code" target="_blank">django-qr-code</a>.</li>
+<li>Restful API built with DRF (Django Rest Framework).</li>
+<li>Token Authentication system for iOS app authentication.</li>
+<li>Swift QR Code Scanner built with the AVFoundation Framework.</li>
+</ul>
+
 The general process of the platform is as follows:
 
 <h3>For Merchants</h3>
@@ -20,14 +30,3 @@ The general process of the platform is as follows:
 <li>Then, the purchase price is deducted from the balance on the customer's gift card.</li>
 <li>Both the merchant and user are instantaneously notified of any outstanding price still owed after the gift cards are used.</li>
 </ol>
-
-
-<h2>Features/Tech Used</h2>
-<ul>
-<li>Email verification with Django built-in features.</li>
-<li>Stripe Connect for payment processing.</li>
-<li>QR Code generation on the backend with <a href="https://github.com/dprog-philippe-docourt/django-qr-code" target="_blank">django-qr-code</a>.</li>
-<li>Restful API built with DRF (Django Rest Framework).</li>
-<li>Token Authentication system for iOS app authentication.</li>
-<li>Swift QR Code Scanner built with the AVFoundation Framework.</li>
-</ul>
