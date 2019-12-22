@@ -2,6 +2,8 @@
 
 Qwaked is a mobile gift card platform built with a Django backend.
 
+<a href="https://www.youtube.com/watch?v=XQFcVH_k5Mo">View the Demo</a>
+
 <h2>Features/Tech Used</h2>
 <ul>
 <li>Email verification with Django built-in features.</li>
