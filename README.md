@@ -3,6 +3,7 @@
 Qwaked is a mobile gift card platform built with a Django backend.
 
 <a href="https://github.com/M4THYOU/mobile-gc-ios">View the iOS App Source Code</a>
+<br>
 <a href="https://www.youtube.com/watch?v=XQFcVH_k5Mo">View the Demo</a>
 
 <h2>Features/Tech Used</h2>
